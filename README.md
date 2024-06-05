@@ -26,7 +26,7 @@
    node server.js
    ```
 
-4. Use a tool like Postman to interact with the API endpoints:
+4. Use a tool like Postman to interact with the API endpoints: http://localhost:9999/tasks/
 
 ## Code Structure
 
