@@ -15,7 +15,10 @@
    ```
 
 2. Install dependencies:
+
+   ```bash
    npm install
+   ```
 
 3. Start the server:
    node server.js
