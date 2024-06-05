@@ -11,7 +11,7 @@
 
    ```bash
    git clone https://github.com/PrajwalBendale/todo.git
-   cd todo-app
+   cd todo
    ```
 
 2. Install dependencies:
