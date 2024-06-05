@@ -10,7 +10,7 @@
    1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/PrajwalBendale/todo.git
    cd todo-app
    ```
 
@@ -33,4 +33,3 @@ Code Structure
 server.js: Main server file for the backend API. Contains the API routes and database connection setup.
 
 This implementation provides a backend API with CRUD operations for managing tasks, including data persistence with MySQL, validation, error handling, and clear documentation for setup and usage.
-
