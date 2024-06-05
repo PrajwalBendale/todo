@@ -21,7 +21,10 @@
    ```
 
 3. Start the server:
+
+   ```bash
    node server.js
+   ```
 
 4. Use a tool like Postman to interact with the API endpoints:
 
@@ -30,3 +33,4 @@ Code Structure
 server.js: Main server file for the backend API. Contains the API routes and database connection setup.
 
 This implementation provides a backend API with CRUD operations for managing tasks, including data persistence with MySQL, validation, error handling, and clear documentation for setup and usage.
+
