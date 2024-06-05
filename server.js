@@ -64,3 +64,68 @@ app.post("/tasks", (req, res) => {
     res.status(200).json({ reply }), connection.end(), res.end();
   });
 });
+
+app.put("/tasks/:id", (req, res) => {
+  console.log(req.params);
+  const { id } = req.params;
+  const { title, description, status } = req.body;
+  console.log(status);
+
+  if (status !== undefined) {
+    const selectQuery = "SELECT * FROM tasks WHERE id = ?";
+    var connection = mysql.createConnection(connectionDetails);
+    connection.query(selectQuery, [id], (err, results) => {
+      if (err) {
+        let reply = {
+          result: err,
+          message: "error",
+        };
+        return res.status(500).json({ reply }), connection.end(), res.end();
+      }
+      if (results[0] && results[0].status == true) {
+        let reply = {
+          result: "Task is already completed",
+          message: "success",
+        };
+        return res.status(400).json({ reply }), connection.end(), res.end();
+      }
+    });
+  }
+  var connection2 = mysql.createConnection(connectionDetails);
+  const query =
+    "UPDATE tasks SET title = ?, description = ?, status = ? WHERE id = ?";
+  connection2.query(query, [title, description, status, id], (err, results) => {
+    if (err) {
+      let reply = {
+        result: err,
+        message: "error",
+      };
+      return res.status(500).json({ reply }), connection2.end(), res.end();
+    }
+    let reply = {
+      result: results,
+      message: "success",
+    };
+    res.status(200).json({ reply }), connection2.end(), res.end();
+  });
+});
+
+app.delete("/tasks/:id", (req, res) => {
+  const { id } = req.params;
+  const query = "DELETE FROM tasks WHERE id = ?";
+  var connection = mysql.createConnection(connectionDetails);
+  connection.query(query, [id], (err, results) => {
+    if (err) {
+      let reply = {
+        result: err,
+        message: "error",
+      };
+      return res.status(500).json({ reply }), connection.end(), res.end();
+    }
+    let reply = {
+      result: results,
+      message: "success",
+    };
+    res.status(200).json({ reply }), connection.end(), res.end();
+  });
+});
